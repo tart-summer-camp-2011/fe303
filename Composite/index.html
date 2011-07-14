@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Composite</title>
+    <script type="text/javascript" src="../third_party/tart/third_party/goog/goog/base.js"></script>
+    <script type="text/javascript" src="../third_party/tart/tart/deps.js"></script>
+    <script type="text/javascript">
+        var Person = function(name) {
+            this.name = name;
+            this.children = [];
+        };
+
+        /**
+         * Adds a child to a person instance.
+         * @param {Person} person Child to be added.
+         */
+        Person.prototype.addChild = function(person) {
+            this.children.push(person);
+        };
+        
+        Person.prototype.visitNeighbors = function() {
+            console.log('aleykum selam ben ' + this.name);
+        };
+
+        var armagan = new Person('armagan');
+        var mert = new Person('mert');
+        var murat = new Person('murat');
+        var secil = new Person('secil');
+        var deniz = new Person('deniz');
+
+        armagan.addChild(mert);
+        armagan.addChild(murat);
+        murat.addChild(secil);
+        deniz.addChild(armagan);
+
+        armagan.visitNeighbors();
+    </script>
+</head>
+<body>
+</body>
+</html>
