@@ -6,26 +6,54 @@
     <script type="text/javascript" src="../third_party/tart/third_party/goog/goog/base.js"></script>
     <script type="text/javascript" src="../third_party/tart/tart/deps.js"></script>
     <script type="text/javascript">
-        var $helloArmaganButton, $helloDamlaButton, sayHello, sayHelloDomBridge;
-        $(function(){
+        var $helloArmaganButton,
+                $helloDamlaButton,
+                sayHello,
+                sayHelloDomBridge,
+                sayHelloPersonBridge,
+                Person,
+                person;
+
+        $(function() {
             $helloArmaganButton = $('<div id="Armagan">Say Hello to Armagan!</div>');
             $helloDamlaButton = $('<div id="Damla">Say Hello to Damla!</div>');
             $('body').append($helloArmaganButton);
             $('body').append($helloDamlaButton);
 
             // core application functionality
-            sayHello = function(name){
+            sayHello = function(name) {
                 console.log("Hello " + name);
             };
 
             // bridge to any other media
+            /**
+             * @this {HTMLElement}
+             */
             sayHelloDomBridge = function() {
                 sayHello($(this).attr('id'));
+            };
+
+            /**
+             * @param {Person} person Person instance to get its name.
+             */
+            sayHelloPersonBridge = function(person) {
+                sayHello(person.name);
             };
 
             // using bridges
             $helloArmaganButton.click(sayHelloDomBridge);
             $helloDamlaButton.mouseover(sayHelloDomBridge);
+
+            // introduce a Person class
+            Person = function(name, eyes, height) {
+                this.name = name;
+                this.eyes = eyes;
+                this.height = height;
+            };
+
+            person = new Person("Mahmut", "brown", "170cm");
+            sayHelloPersonBridge(person);
+            
         });
     </script>
 </head>
