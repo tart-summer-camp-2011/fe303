@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Singleton</title>
+    <script type="text/javascript" src="../third_party/tart/third_party/goog/goog/base.js"></script>
+    <script type="text/javascript" src="../third_party/tart/tart/deps.js"></script>
+    <script type="text/javascript">
+        var Singleton = {};
+
+        Singleton.init = function() {
+            Singleton.data = [];
+            for (var i=0; i < 10; i++)
+                Singleton.data.push("item" + i);
+        };
+
+        Singleton.log = function(index) {
+            console.log(Singleton.data[index]);
+        };
+        
+    </script>
+    
+</head>
+<body>
+
+</body>
+</html>
