@@ -13,12 +13,16 @@
             $('body').append($helloArmaganButton);
             $('body').append($helloDamlaButton);
 
-            sayHello = function(){
-                console.log("Hello " + $(this).attr('id'));
+            sayHello = function(name){
+                console.log("Hello " + name);
             };
-            
-            $helloArmaganButton.click(sayHello);
-            $helloDamlaButton.mouseover(sayHello);
+             
+            $helloArmaganButton.click(function(){
+                sayHello($(this).attr('id'));
+            });
+            $helloDamlaButton.mouseover(function(){
+                sayHello($(this).attr('id'));
+            });
         });
     </script>
 </head>
