@@ -6,23 +6,26 @@
     <script type="text/javascript" src="../third_party/tart/third_party/goog/goog/base.js"></script>
     <script type="text/javascript" src="../third_party/tart/tart/deps.js"></script>
     <script type="text/javascript">
-        var $helloArmaganButton, $helloDamlaButton, sayHello;
+        var $helloArmaganButton, $helloDamlaButton, sayHello, sayHelloDomBridge;
         $(function(){
             $helloArmaganButton = $('<div id="Armagan">Say Hello to Armagan!</div>');
             $helloDamlaButton = $('<div id="Damla">Say Hello to Damla!</div>');
             $('body').append($helloArmaganButton);
             $('body').append($helloDamlaButton);
 
+            // core application functionality
             sayHello = function(name){
                 console.log("Hello " + name);
             };
-             
-            $helloArmaganButton.click(function(){
+
+            // bridge to any other media
+            sayHelloDomBridge = function() {
                 sayHello($(this).attr('id'));
-            });
-            $helloDamlaButton.mouseover(function(){
-                sayHello($(this).attr('id'));
-            });
+            };
+
+            // using bridges
+            $helloArmaganButton.click(sayHelloDomBridge);
+            $helloDamlaButton.mouseover(sayHelloDomBridge);
         });
     </script>
 </head>
