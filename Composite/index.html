@@ -20,6 +20,8 @@
         
         Person.prototype.visitNeighbors = function() {
             console.log('aleykum selam ben ' + this.name);
+            for (var i = 0, length = this.children.length; i < length; i++)
+                this.children[i].visitNeighbors();
         };
 
         var armagan = new Person('armagan');
