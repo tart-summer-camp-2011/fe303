@@ -6,18 +6,19 @@
     <script type="text/javascript" src="../third_party/tart/third_party/goog/goog/base.js"></script>
     <script type="text/javascript" src="../third_party/tart/tart/deps.js"></script>
     <script type="text/javascript">
+        var $helloArmaganButton, $helloDamlaButton, sayHello;
         $(function(){
-            var $helloArmaganButton = $('<div id="Armagan">Say Hello to Armagan!</div>');
-            var $helloDamlaButton = $('<div id="Damla">Say Hello to Damla!</div>');
+            $helloArmaganButton = $('<div id="Armagan">Say Hello to Armagan!</div>');
+            $helloDamlaButton = $('<div id="Damla">Say Hello to Damla!</div>');
             $('body').append($helloArmaganButton);
             $('body').append($helloDamlaButton);
 
-            $helloArmaganButton.click(function(e){
-               console.log("Hello " + $(this).attr('id'));
-            });
-            $helloDamlaButton.click(function(e){
-               console.log("Hello " + $(this).attr('id'));
-            });
+            sayHello = function(){
+                console.log("Hello " + $(this).attr('id'));
+            };
+            
+            $helloArmaganButton.click(sayHello);
+            $helloDamlaButton.mouseover(sayHello);
         });
     </script>
 </head>
