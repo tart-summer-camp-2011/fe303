@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Factory</title>
+    <script type="text/javascript" src="../third_party/tart/third_party/goog/goog/base.js"></script>
+    <script type="text/javascript" src="../third_party/tart/tart/deps.js"></script>
+    <script type="text/javascript">
+        var MacBookAir = function() {};
+        var MacBookPro = function() {};
+        var MacBook = function() {};
+        var MacBookTouch = function() {};
+
+        var MacBookFactory = function() {};
+
+        MacBookFactory.prototype.createMacBook = function(type) {
+            switch(type) {
+                case "air":
+                    return new MacBookAir();
+                case "pro":
+                    return new MacBookPro();
+                default:
+                    return new MacBook();
+            }
+        }
+
+        var Apple = new MacBookFactory();
+        var air = Apple.createMacBook("air");
+    </script>
+</head>
+<body>
